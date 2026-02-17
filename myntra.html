@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Myntra - Online Shopping for Women, Men, Kids Fashion & Lifestyle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #4F47C8;
+      --primary-dark: #2F2B78;
+      --text-dark: #0E0F17;
+      --text-muted: #3E3F45;
+      --text-light: #6E6F74;
+      --bg-white: #FFFFFF;
+      --bg-gray: #F3F3F3;
+      --border: #E7E7E8;
+      --success: #239D56;
+      --alert: #C84646;
+    }
+
+    body {
+      font-family: 'Assistant', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-dark);
+      background: var(--bg-white);
+    }
+
+    /* Header */
+    .header-top {
+      background: var(--primary);
+      color: white;
+      padding: 8px 0;
+      font-size: 12px;
+    }
+    .header-top-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header-top a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .header-main {
+      background: var(--bg-white);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-main-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      flex: 1;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    .search-box {
+      flex: 1;
+      max-width: 400px;
+      background: var(--bg-gray);
+      border: none;
+      border-radius: 4px;
+      padding: 10px 16px;
+      font-size: 14px;
+    }
+    .search-box::placeholder {
+      color: var(--text-light);
+    }
+    .header-icons {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+    .header-icon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 11px;
+    }
+    .header-icon span {
+      font-size: 20px;
+      margin-bottom: 2px;
+    }
+
+    /* Hero Banner */
+    .hero {
+      background: linear-gradient(135deg, #EDEDF9 0%, #CAC8EE 100%);
+      padding: 40px 24px;
+      margin-bottom: 24px;
+    }
+    .hero-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 48px;
+    }
+    .hero-content h1 {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+    }
+    .hero-content p {
+      font-size: 18px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+    .hero-visual {
+      width: 100%;
+      max-width: 480px;
+      height: 280px;
+      background: linear-gradient(145deg, rgba(79,71,200,0.2) 0%, rgba(47,43,120,0.1) 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 72px;
+    }
+
+    /* Category Strip */
+    .category-strip {
+      max-width: 1280px;
+      margin: 0 auto 32px;
+      padding: 0 24px;
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+    .category-strip::-webkit-scrollbar {
+      height: 4px;
+    }
+    .category-card {
+      min-width: 120px;
+      text-align: center;
+      padding: 16px;
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+    .category-card:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    .category-card .icon {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    /* Offers Section */
+    .offers {
+      max-width: 1280px;
+      margin: 0 auto 32px;
+      padding: 0 24px;
+    }
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--text-dark);
+    }
+    .offer-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .offer-card {
+      background: linear-gradient(135deg, #FEF8EC 0%, #FCEAC5 100%);
+      border-radius: 8px;
+      padding: 20px;
+      border: 1px solid #F5B93F;
+    }
+    .offer-card.sale {
+      background: linear-gradient(135deg, #F9ECEC 0%, #EEC7C7 100%);
+      border-color: var(--alert);
+    }
+    .offer-card h3 {
+      font-size: 16px;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+    .offer-card p {
+      font-size: 13px;
+      color: var(--text-light);
+    }
+    .offer-card .badge {
+      display: inline-block;
+      background: var(--alert);
+      color: white;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-top: 8px;
+    }
+
+    /* Products Section */
+    .products {
+      max-width: 1280px;
+      margin: 0 auto 48px;
+      padding: 0 24px;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 1024px) {
+      .product-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .product-card {
+      background: var(--bg-white);
+      border-radius: 8px;
+      overflow: hidden;
+      text-decoration: none;
+      color: var(--text-dark);
+      border: 1px solid var(--border);
+      transition: all 0.2s;
+    }
+    .product-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .product-image {
+      aspect-ratio: 3/4;
+      background: var(--bg-gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      position: relative;
+    }
+    .product-badge {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      background: var(--alert);
+      color: white;
+      font-size: 10px;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+    .product-info {
+      padding: 12px;
+    }
+    .product-brand {
+      font-size: 12px;
+      color: var(--text-light);
+      margin-bottom: 4px;
+    }
+    .product-name {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .product-price {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .product-price .current {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+    .product-price .original {
+      font-size: 12px;
+      color: var(--text-light);
+      text-decoration: line-through;
+    }
+    .product-price .discount {
+      font-size: 12px;
+      color: var(--success);
+      font-weight: 600;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--text-dark);
+      color: white;
+      padding: 48px 24px 24px;
+    }
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      margin-bottom: 32px;
+    }
+    @media (max-width: 768px) {
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .footer-col h4 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      color: #BABABC;
+    }
+    .footer-col ul {
+      list-style: none;
+    }
+    .footer-col li {
+      margin-bottom: 8px;
+    }
+    .footer-col a {
+      color: #8F8F92;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .footer-col a:hover {
+      color: white;
+    }
+    .footer-bottom {
+      border-top: 1px solid #3E3F45;
+      padding-top: 24px;
+      text-align: center;
+      font-size: 12px;
+      color: #6E6F74;
+    }
+  </style>
+</head>
+<body>
+  <header class="header-top">
+    <div class="header-top-inner">
+      <span>Free shipping on orders above ₹999</span>
+      <div>
+        <a href="#">Customer Support</a> |
+        <a href="#">Track Order</a> |
+        <a href="#">Stores</a>
+      </div>
+    </div>
+  </header>
+
+  <header class="header-main">
+    <div class="header-main-inner">
+      <a href="#" class="logo">Myntra</a>
+      <nav class="nav-links">
+        <a href="#">Men</a>
+        <a href="#">Women</a>
+        <a href="#">Kids</a>
+        <a href="#">Home & Living</a>
+        <a href="#">Beauty</a>
+      </nav>
+      <input type="search" class="search-box" placeholder="Search for products, brands and more">
+      <div class="header-icons">
+        <a href="#" class="header-icon">
+          <span>👤</span>
+          Profile
+        </a>
+        <a href="#" class="header-icon">
+          <span>♡</span>
+          Wishlist
+        </a>
+        <a href="#" class="header-icon">
+          <span>🛒</span>
+          Bag
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <h1>New Season. New Styles.</h1>
+        <p>Discover the latest trends in fashion. Up to 70% off on top brands.</p>
+        <button class="btn-primary">Shop Now</button>
+      </div>
+      <div class="hero-visual">✨</div>
+    </div>
+  </section>
+
+  <div class="category-strip">
+    <a href="#" class="category-card">
+      <div class="icon">👕</div>
+      <div>Men</div>
+    </a>
+    <a href="#" class="category-card">
+      <div class="icon">👗</div>
+      <div>Women</div>
+    </a>
+    <a href="#" class="category-card">
+      <div class="icon">👶</div>
+      <div>Kids</div>
+    </a>
+    <a href="#" class="category-card">
+      <div class="icon">💄</div>
+      <div>Beauty</div>
+    </a>
+    <a href="#" class="category-card">
+      <div class="icon">👜</div>
+      <div>Bags</div>
+    </a>
+    <a href="#" class="category-card">
+      <div class="icon">👟</div>
+      <div>Footwear</div>
+    </a>
+  </div>
+
+  <section class="offers">
+    <h2 class="section-title">Offers For You</h2>
+    <div class="offer-cards">
+      <div class="offer-card sale">
+        <h3>Up to 70% Off</h3>
+        <p>On Top Brands - Limited time</p>
+        <span class="badge">SALE</span>
+      </div>
+      <div class="offer-card">
+        <h3>Extra 10% Off</h3>
+        <p>Use code MYNTRA10 on first order</p>
+      </div>
+      <div class="offer-card">
+        <h3>Free Shipping</h3>
+        <p>On orders above ₹999</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="products">
+    <h2 class="section-title">Trending Now</h2>
+    <div class="product-grid">
+      <a href="#" class="product-card">
+        <div class="product-image">
+          👔
+          <span class="product-badge">40% OFF</span>
+        </div>
+        <div class="product-info">
+          <div class="product-brand">H&M</div>
+          <div class="product-name">Slim Fit Casual Shirt</div>
+          <div class="product-price">
+            <span class="current">₹999</span>
+            <span class="original">₹1,499</span>
+            <span class="discount">(40% off)</span>
+          </div>
+        </div>
+      </a>
+      <a href="#" class="product-card">
+        <div class="product-image">👕</div>
+        <div class="product-info">
+          <div class="product-brand">Nike</div>
+          <div class="product-name">Dri-FIT Training T-Shirt</div>
+          <div class="product-price">
+            <span class="current">₹1,299</span>
+            <span class="original">₹1,799</span>
+            <span class="discount">(28% off)</span>
+          </div>
+        </div>
+      </a>
+      <a href="#" class="product-card">
+        <div class="product-image">
+          👗
+          <span class="product-badge">BESTSELLER</span>
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Zara</div>
+          <div class="product-name">Floral Midi Dress</div>
+          <div class="product-price">
+            <span class="current">₹2,490</span>
+            <span class="original">₹3,990</span>
+            <span class="discount">(38% off)</span>
+          </div>
+        </div>
+      </a>
+      <a href="#" class="product-card">
+        <div class="product-image">👟</div>
+        <div class="product-info">
+          <div class="product-brand">Puma</div>
+          <div class="product-name">Running Sneakers</div>
+          <div class="product-price">
+            <span class="current">₹2,999</span>
+            <span class="original">₹3,999</span>
+            <span class="discount">(25% off)</span>
+          </div>
+        </div>
+      </a>
+      <a href="#" class="product-card">
+        <div class="product-image">👜</div>
+        <div class="product-info">
+          <div class="product-brand">Fossil</div>
+          <div class="product-name">Leather Crossbody Bag</div>
+          <div class="product-price">
+            <span class="current">₹3,499</span>
+          </div>
+        </div>
+      </a>
+      <a href="#" class="product-card">
+        <div class="product-image">⌚</div>
+        <div class="product-info">
+          <div class="product-brand">Titan</div>
+          <div class="product-name">Analogue Watch</div>
+          <div class="product-price">
+            <span class="current">₹1,799</span>
+            <span class="original">₹2,495</span>
+            <span class="discount">(28% off)</span>
+          </div>
+        </div>
+      </a>
+      <a href="#" class="product-card">
+        <div class="product-image">🧥</div>
+        <div class="product-info">
+          <div class="product-brand">Levi's</div>
+          <div class="product-name">Denim Jacket</div>
+          <div class="product-price">
+            <span class="current">₹3,999</span>
+            <span class="original">₹4,999</span>
+            <span class="discount">(20% off)</span>
+          </div>
+        </div>
+      </a>
+      <a href="#" class="product-card">
+        <div class="product-image">👓</div>
+        <div class="product-info">
+          <div class="product-brand">Ray-Ban</div>
+          <div class="product-name">Aviator Sunglasses</div>
+          <div class="product-price">
+            <span class="current">₹4,990</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Online Shopping</h4>
+          <ul>
+            <li><a href="#">Men</a></li>
+            <li><a href="#">Women</a></li>
+            <li><a href="#">Kids</a></li>
+            <li><a href="#">Home & Living</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Customer Policies</h4>
+          <ul>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">T&C</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Experience</h4>
+          <ul>
+            <li><a href="#">Stores</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Follow Us</h4>
+          <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Twitter</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2025 Myntra. All rights reserved. | Sample Demo Page
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
